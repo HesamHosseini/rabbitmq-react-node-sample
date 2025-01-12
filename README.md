@@ -4,9 +4,9 @@ This project consists of two Node.js applications: a consumer and a publisher. B
 
 ## Project Structure
 
-- `consumer/`: Node.js application that consumes messages from RabbitMQ.
-- `publisher/`: Node.js application that publishes messages to RabbitMQ.
-- `client/`: Sample React client implementation.
+- `consumer`: Node.js application that consumes messages from RabbitMQ.
+- `publisher`: Node.js application that publishes messages to RabbitMQ.
+- `rabbitmq-frontend/`: Sample React client implementation.
 
 ## Prerequisites
 
@@ -18,32 +18,28 @@ This project consists of two Node.js applications: a consumer and a publisher. B
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/rabbitmq-sample-node.git
+    git clone https://github.com/HesamHosseini/rabbitmq-sample-node.git
     cd rabbitmq-sample-node
     ```
 
 2. Start RabbitMQ using Docker:
     ```sh
-    docker-compose up -d
+    docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672  -v rabbitmq_data:/var/lib/rabbitmq rabbitmq:4.0-management
     ```
 
 3. Install dependencies for both consumer and publisher:
     ```sh
-    cd consumer
     npm install
-    cd ../publisher
-    npm install
+    
     ```
 
 4. Run the consumer and publisher:
     ```sh
-    cd consumer
-    npm start
-    cd ../publisher
-    npm start
+    node consumer.js
+    npm publisher.js
     ```
 
-5. Navigate to the `client` directory and follow the instructions in the README to start the React client.
+5. Navigate to the `rabbitmq-frontend` directory and follow the instructions in the README to start the React client.
 
 ## License
 
